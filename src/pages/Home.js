@@ -13,6 +13,7 @@ class Index extends Component {
           onNavigation={() => console.log("onNavigation!")}
           actionItems={[
             <Badge
+              key={3}
               containerStyle={{ marginRight: 16, flex: 1 }}
               color={"#e10050"}
               textColor={"white"}
