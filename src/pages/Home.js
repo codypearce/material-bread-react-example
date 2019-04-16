@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
-import { Appbar, Fab, Badge, IconButton } from "material-bread";
+import { View, Image } from "react-native";
+import { Appbar, Fab, Heading, Badge, IconButton } from "material-bread";
 
 class Index extends Component {
   render() {
@@ -29,7 +29,7 @@ class Index extends Component {
           source={require("../assets/material-bread.png")}
           style={styles.logo}
         />
-        <Text style={styles.title}>Material Bread</Text>
+        <Heading style={styles.title}>Material Bread</Heading>
         <View style={styles.content}>
           <Fab style={styles.fab} />
         </View>
