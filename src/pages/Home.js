@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { Appbar, Fab, Badge, IconButton } from "material-bread";
 
 class Index extends Component {
@@ -25,6 +25,10 @@ class Index extends Component {
             { name: "more-vert" }
           ]}
         />
+        <Image
+          source={require("../assets/material-bread.png")}
+          style={styles.logo}
+        />
         <Text style={styles.title}>Material Bread</Text>
         <View style={styles.content}>
           <Fab style={styles.fab} />
@@ -47,6 +51,12 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     position: "relative"
+  },
+  logo: {
+    width: 300,
+    height: 250,
+    alignSelf: "center",
+    marginTop: 20
   },
   title: {
     fontSize: 48,
