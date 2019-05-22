@@ -39,7 +39,7 @@
     "@material-ui/icons": "^3.0.2",
     "css-loader": "^2.1.1",
     "eslint-import-resolver-alias": "^1.1.2",
-    "material-bread": "0.0.5",
+    "material-bread": "0.1.1",
     "react": "16.3.1 ",
     "react-art": "^16.8.6",
     "react-dom": "16.3.1 ",
