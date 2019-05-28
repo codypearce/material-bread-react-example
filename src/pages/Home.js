@@ -1,74 +1,135 @@
-import React, { Component } from "react";
-import { View, Image } from "react-native";
-import { Appbar, Fab, Heading, Badge, IconButton } from "material-bread";
+import React from "react";
+import { View, Text } from "react-native";
+import {
+  Backdrop,
+  List,
+  ListItem,
+  Icon,
+  IconButton,
+  Avatar,
+  Heading
+} from "material-bread";
 
-class Index extends Component {
+const styles = {
+  container: {
+    flex: 1,
+    paddingTop: 30,
+    alignItems: "center"
+  },
+  backdropHeader: {
+    height: 56,
+    flexDirection: "row",
+    alignItems: "center"
+  },
+  backdropHeaderTitle: {
+    fontSize: 18,
+    color: "white",
+    fontWeight: "500",
+    marginLeft: 72
+  }
+};
+
+const backLayerRevealed = (
+  <View style={{ flex: 1, width: "100%" }}>
+    <View style={styles.backdropHeader}>
+      <Text style={styles.backdropHeaderTitle}>Navigation</Text>
+    </View>
+
+    <List
+      style={{
+        width: "100%",
+        backgroundColor: "transparent"
+      }}
+    >
+      <ListItem
+        text={"Home"}
+        textStyle={{ color: "white" }}
+        selected
+        style={{ backgroundColor: "transparent" }}
+        icon={<Icon name={"home"} size={24} color={"white"} />}
+      />
+      <ListItem
+        text={"Music"}
+        textStyle={{ color: "white" }}
+        style={{ backgroundColor: "transparent" }}
+        icon={<Icon name={"music-note"} size={24} color={"white"} />}
+      />
+      <ListItem
+        text={"Favorites"}
+        textStyle={{ color: "white" }}
+        style={{ backgroundColor: "transparent" }}
+        icon={<Icon name={"favorite"} size={24} color={"white"} />}
+      />
+      <ListItem
+        text={"Settings"}
+        textStyle={{ color: "white" }}
+        style={{ backgroundColor: "transparent" }}
+        icon={<Icon name={"settings"} size={24} color={"white"} />}
+      />
+    </List>
+  </View>
+);
+
+const album = (
+  <Avatar
+    type="icon"
+    content="album"
+    contentColor={"#ececec"}
+    color={"#a3a3a3"}
+    size={40}
+  />
+);
+const iconFav = <IconButton name="favorite" size={24} color="#6e6e6e" />;
+
+export default class Page extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Appbar
-          barType={"normal"}
-          title={"Page Title"}
-          navigationType={"menu"}
-          onNavigation={() => console.log("onNavigation!")}
-          actionItems={[
-            <Badge
-              key={3}
-              containerStyle={{ marginRight: 16, flex: 1 }}
-              color={"#e10050"}
-              textColor={"white"}
-              size={14}
-              content={77}
-            >
-              <IconButton name="favorite" size={24} color={"white"} />
-            </Badge>,
-            { name: "search", onPress: () => console.log("onSearch") },
-            { name: "more-vert" }
-          ]}
-        />
-        <Image
-          source={require("../assets/material-bread.png")}
-          style={styles.logo}
-        />
-        <Heading style={styles.title}>Material Bread</Heading>
-        <View style={styles.content}>
-          <Fab style={styles.fab} />
-        </View>
+      <View style={{ marginBottom: 80 }}>
+        <Backdrop
+          backLayerConcealed={
+            <View style={styles.backdropHeader}>
+              <Text style={styles.backdropHeaderTitle}>App</Text>
+            </View>
+          }
+          backLayerRevealed={backLayerRevealed}
+          offset={260}
+        >
+          <View style={styles.container}>
+            <Heading
+              text={"Albums"}
+              style={{
+                alignSelf: "flex-start",
+                marginLeft: 20,
+                fontSize: 20
+              }}
+            />
+            <ListItem
+              text={"Back in Black"}
+              secondaryText={"AC/DC"}
+              media={album}
+              actionItem={iconFav}
+            />
+            <ListItem
+              text={"Hotel California"}
+              secondaryText={"Eagles"}
+              media={album}
+              actionItem={iconFav}
+            />
+            <ListItem
+              text={"Dark Side of the Moon"}
+              secondaryText={"Pink Floyd "}
+              media={album}
+              actionItem={iconFav}
+            />
+            <ListItem
+              text={"Led Zeppelin IV"}
+              secondaryText={"Led Zeppelin"}
+              media={album}
+              actionItem={iconFav}
+            />
+          </View>
+        </Backdrop>
       </View>
     );
   }
 }
-
-const styles = {
-  container: {
-    display: "flex",
-    position: "relative",
-    width: "100%",
-    height: "100%",
-    flex: 1
-  },
-  content: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative"
-  },
-  logo: {
-    width: 300,
-    height: 250,
-    alignSelf: "center",
-    marginTop: 20
-  },
-  title: {
-    fontSize: 48,
-    textAlign: "center",
-    marginTop: 40
-  },
-  fab: {
-    position: "absolute",
-    right: 24,
-    bottom: 24
-  }
-};
-
-export default Index;
